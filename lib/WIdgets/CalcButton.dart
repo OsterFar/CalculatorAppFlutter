@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class CalcButton extends StatelessWidget {
   final String text;
   final int fillcolor;
   final int textcolor;
   final double textsize;
+  final Function callback;
 
   const CalcButton({
     Key key,
@@ -12,6 +14,7 @@ class CalcButton extends StatelessWidget {
     this.fillcolor,
     this.textcolor = 0XFFFFFFFF,
     this.textsize = 24,
+    this.callback,
   }) : super(key: key);
 
   @override
@@ -31,7 +34,9 @@ class CalcButton extends StatelessWidget {
               fontSize: textsize,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            callback(text);
+          },
           color: fillcolor != null ? Color(fillcolor) : null,
           textColor: Color(textcolor),
         ),
